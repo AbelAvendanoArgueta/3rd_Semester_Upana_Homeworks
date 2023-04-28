@@ -46,7 +46,7 @@ b = float(input("Por favor, ingrese el valor de 'b': "))
 c = float(input("Por favor, ingrese el valor de 'c': "))
 
 # Definimos la ecuación cuadrática
-x = np.linspace(-10, 10, 100)
+x = np.linspace(-5, 5, 1000)
 y = a*x**2 + b*x + c
 
 # Graficamos la ecuación
@@ -57,12 +57,12 @@ fig = plt.gcf()
 fig.set_size_inches(10, 10)
 
 # Configuramos el tamaño de los ejes
-plt.xlim(-10, 10)
-plt.ylim(-10, 10)
+plt.xlim(-5, 5)
+plt.ylim(-5, 5)
 
 # Configuramos los ticks para mostrar los cuatro cuadrantes
-plt.xticks(np.arange(-10, 11, 1))
-plt.yticks(np.arange(-10, 11, 1))
+plt.xticks(np.arange(-5, 6, 1))
+plt.yticks(np.arange(-5, 6, 1))
 
 # Configuramos la ubicación del origen en el centro del plano cartesiano
 plt.axhline(0, color='grey', linewidth=0.5)
