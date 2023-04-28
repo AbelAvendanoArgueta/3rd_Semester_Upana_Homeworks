@@ -39,6 +39,24 @@ print_header("Abel Fernando Avendaño Argueta 000127599")
 # Saludo
 print("\n\n         Bienvenido a este programa! \n\n")
 
+def calcular_coordenada():
+    # función para solicitar el valor de x
+    # en distintos momentos del programa, para ir graficando
+
+    global a
+    global b
+    global c
+    global x_Function
+    global y_Function
+
+    x_Function = float(input("\nIngrese el valor de x: "))
+
+    y_Function1 = (a)*(x_Function**2) + (b*x_Function) + c
+    coordenada_Function = (round(x_Function), round(y_Function1))
+    return coordenada_Function
+
+
+
 def crear_tablero():
     # Define el tamaño del tablero
     altura = 100
@@ -78,14 +96,25 @@ def crear_tablero():
 
 coordenadas = {}
 
+# Entradas de usuario en relación a, b y c que no deberían cambiar a lo
+# largo de la ejecución del script
+
+a = float(input("Ingrese el valor de a: "))
+b = float(input("Ingrese el valor de b: "))
+c = float(input("Ingrese el valor de c: "))
+
+# Otras variables globales necesarias
+
+x_Function = 0
+y_Function = 0
+
+# Llama a la función y guarda los valores devueltos en variables
+tablero, diccionario_tablero = crear_tablero()
+
 for y in range(50, -51, -1):
     coordenadas[y] = []
     for x in range(-50, 51):
         coordenadas[y].append((x, y))
-
-
-# Llama a la función y guarda los valores devueltos en variables
-tablero, diccionario_tablero = crear_tablero()
 
 # Imprime el tablero
 print("\n tablero just for debugging: \n")
@@ -103,3 +132,8 @@ print(tablero[99])
 print("\n coor just for debugging: \n")
 
 print(coordenadas[50])
+
+# Impresión de valor de coordenada
+coordenada_Solved = calcular_coordenada()
+print("\n La coordenada correspondiente es: \n", coordenada_Solved)
+print("\n El valor de x es:", x_Function)
