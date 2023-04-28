@@ -76,10 +76,19 @@ def crear_tablero():
 
     return tablero, diccionario_tablero
 
+coordenadas = {}
+
+for y in range(50, -51, -1):
+    coordenadas[y] = []
+    for x in range(-50, 51):
+        coordenadas[y].append((x, y))
+
+
 # Llama a la función y guarda los valores devueltos en variables
 tablero, diccionario_tablero = crear_tablero()
 
 # Imprime el tablero
+print("\n tablero just for debugging: \n")
 for fila in tablero:
     print("".join(fila))
 
@@ -87,3 +96,10 @@ print("\n separación \n")
 
 # Imprime el diccionario
 print("".join(diccionario_tablero.values()))
+
+print("\n character just for debugging: \n")
+print(tablero[99])
+
+print("\n coor just for debugging: \n")
+
+print(coordenadas[50])
