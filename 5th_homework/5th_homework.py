@@ -39,31 +39,40 @@ print_header("Abel Fernando Avendaño Argueta 000127599")
 # Saludo
 print("\n\n         Bienvenido a este programa! \n\n")
 
-# Solicitar al usuario los parámetros de la ecuación cuadrática
-a = float(input("Ingrese el valor de a: "))
-b = float(input("Ingrese el valor de b: "))
-c = float(input("Ingrese el valor de c: "))
-x_min = float(input("Ingrese el valor mínimo de x: "))
-x_max = float(input("Ingrese el valor máximo de x: "))
+def crear_tablero():
+    # Define el tamaño del tablero
+    altura = 100
+    ancho = 100
 
-# Obtener el ancho y la altura de la ventana de la consola
-terminal_size = os.get_terminal_size().columns
-ancho = 100 if terminal_size > 100 else terminal_size
-altura = 100 if terminal_size > 100 else terminal_size
+    # Crea una matriz vacía del tamaño del tablero
+    tablero = [[" " for _ in range(ancho)] for _ in range(altura)]
 
-# Recorrer cada fila y columna de la matriz
-for y_espacio in range(altura):
-    for x_espacio in range(ancho):
-        x = x_espacio * (x_max - x_min) / ancho + x_min
-        y = altura - 1 - y_espacio
-        if abs(y - int(a * x**2 + b * x + c)) < 1:
-            print("*", end="")
-        elif x_espacio == int(x_min * ancho / (x_max - x_min)):
-            print("|", end="")
-        elif y_espacio == int(altura / 2):
-            print("-", end="")
-        elif y_espacio == altura - 1 and abs(y - int(a * x**2 + b * x + c)) >= 1:
-            print("-", end="")
-        else:
-            print(" ", end="")
-    print()  # Imprimir un salto de línea al final de cada fila
+    # Dibuja los ejes x e y
+    for i in range(ancho):
+        tablero[altura//2][i] = "-"
+    for i in range(altura):
+        tablero[i][ancho//2] = "|"
+
+    # Dibuja los cuadrantes
+    for i in range(ancho):
+        for j in range(altura):
+            if i == ancho//2 and j == altura//2:
+                tablero[j][i] = "0"
+            elif i == ancho//2:
+                tablero[j][i] = "|"
+            elif j == altura//2:
+                tablero[j][i] = "-"
+            elif i > ancho//2 and j < altura//2:
+                tablero[j][i] = "."
+            elif i < ancho//2 and j < altura//2:
+                tablero[j][i] = "."
+            elif i < ancho//2 and j > altura//2:
+                tablero[j][i] = "."
+            elif i > ancho//2 and j > altura//2:
+                tablero[j][i] = "."
+
+    # Imprime el tablero
+    for fila in tablero:
+        print("".join(fila))
+
+crear_tablero()
