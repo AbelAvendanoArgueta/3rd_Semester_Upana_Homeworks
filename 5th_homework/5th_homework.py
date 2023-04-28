@@ -71,8 +71,19 @@ def crear_tablero():
             elif i > ancho//2 and j > altura//2:
                 tablero[j][i] = "."
 
-    # Imprime el tablero
-    for fila in tablero:
-        print("".join(fila))
+    # Crea un diccionario con las filas del tablero
+    diccionario_tablero = {i: "".join(fila) + "\n" for i, fila in enumerate(tablero)}
 
-crear_tablero()
+    return tablero, diccionario_tablero
+
+# Llama a la función y guarda los valores devueltos en variables
+tablero, diccionario_tablero = crear_tablero()
+
+# Imprime el tablero
+for fila in tablero:
+    print("".join(fila))
+
+print("\n separación \n")
+
+# Imprime el diccionario
+print("".join(diccionario_tablero.values()))
