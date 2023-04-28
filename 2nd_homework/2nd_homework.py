@@ -1,3 +1,22 @@
+"""
+Operadores en Python
+Due March 10, 2023 11:59 PM
+Closes April 14, 2023 11:59 PM
+
+Instructions:
+Crear un programa en Python, que cumpla las siguientes características: 
+
+    - Iniciar con un saludo al usuario.
+    - Solicitar al usuario el ingreso de dos cantidades. 
+    - Imprimir el resultado de la suma las dos cantidades.
+    - Imprimir el resultado de la resta de las dos cantidades.
+    - Imprimir el resultado de la multiplicación de las dos cantidades. 
+    - Imprimir el resultado de la división entera de las dos cantidades.
+    - Imprimir el residuo de la división entera de las dos cantidades. 
+    - Imprimir el resultado con dos decimales de la división de las dos cantidades.
+    - Imprimir el resultado de la operación exponencial de las dos cantidades.
+"""
+
 # Librerias Importantes
 import os
 

@@ -1,3 +1,18 @@
+"""
+Sentencia IF y operadores de comparación en Python
+Due March 17, 2023 11:59 PM
+Closes April 14, 2023 11:59 PM
+
+Instructions:
+
+Crear un programa en Python, que cumpla con las siguientes funcionalidades: 
+Imprimir mensaje de bienvenida al usuario.
+
+    - Solicitar al usuario el ingreso de un número.
+    - Comprobar si el numero ingresado es positivo o negativo, e imprimir la respuesta.
+    - Comprobar si el numero ingresado es par o impar, e imprimir la respuesta. 
+"""
+
 # Librerias Importantes
 import os
 

@@ -1,3 +1,18 @@
+"""
+Listas, tuplas y diccionarios en Python
+Due March 31, 2023 11:59 PM
+Closes April 14, 2023 11:59 PM
+
+Instructions:
+
+Crear un programa que cumpla con las siguientes funcionalidades:
+
+    - Iniciar con un saludo al usuario.
+    - Solicitar al usuario el ingreso de: Nombre, Apellido, Edad, Genero, Documento de identidad, profesión, estado civil. 
+    - Los datos ingresados se deben almacenar en una variable de tipo lista para su posterior manipulación.
+    - A partir de la información proporcionada por el usuario mostrar: año de nacimiento, lugar de nacimiento, y consultar al usuario si desea modificar alguno de los datos.
+"""
+
 from unidecode import unidecode
 # Librerias Importantes
 import os

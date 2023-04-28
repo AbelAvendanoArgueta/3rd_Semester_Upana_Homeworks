@@ -1,4 +1,19 @@
 # var  type int
+"""
+Variables en Python
+Due March 3, 2023 11:59 PM
+Closes March 3, 2023 11:59 PM
+
+Instructions: 
+Crear un script que contenga los siguientes tipos de variables: 
+
+    - Entero (int)
+    - Coma flotante (float)
+    - Complejo (complex)
+    - Booleano (bool)
+    - Texto (String) 
+    - Texto (String) utilizando salto de linea con diagonal
+"""
 
 var_int = 255
 print(type(var_int)) # --- python will transform this var to string in order to print
