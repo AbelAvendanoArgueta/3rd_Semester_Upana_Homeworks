@@ -16,6 +16,8 @@ Crear un programa en Python que permita graficar cualquier ecuación cuadrática
 
 # Librerías Importantes
 import os
+import matplotlib.pyplot as plt
+import numpy as np
 
 # función para imprimir encabezados centrados
 def print_header(text):
@@ -38,3 +40,25 @@ print_header("Abel Fernando Avendaño Argueta 000127599")
 
 # Saludo
 print("\n\n         Bienvenido a este programa! \n\n")
+
+a = float(input("Por favor, ingrese el valor de 'a': "))
+b = float(input("Por favor, ingrese el valor de 'b': "))
+c = float(input("Por favor, ingrese el valor de 'c': "))
+
+# Definimos la ecuación cuadrática
+x = np.linspace(-10, 10, 100)
+y = a*x**2 + b*x + c
+
+# Graficamos la ecuación
+plt.plot(x, y)
+
+# Configuramos el tamaño de la figura
+fig = plt.gcf()
+fig.set_size_inches(10, 10)
+
+# Configuramos el tamaño de los ejes
+plt.xlim(-10, 10)
+plt.ylim(-10, 10)
+
+# Mostramos la figura
+plt.show()
