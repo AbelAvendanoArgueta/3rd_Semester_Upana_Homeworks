@@ -50,7 +50,7 @@ x = np.linspace(-10, 10, 100)
 y = a*x**2 + b*x + c
 
 # Graficamos la ecuación
-plt.plot(x, y)
+plt.plot(x, y, linewidth=2)
 
 # Configuramos el tamaño de la figura
 fig = plt.gcf()
@@ -59,6 +59,14 @@ fig.set_size_inches(10, 10)
 # Configuramos el tamaño de los ejes
 plt.xlim(-10, 10)
 plt.ylim(-10, 10)
+
+# Configuramos los ticks para mostrar los cuatro cuadrantes
+plt.xticks(np.arange(-10, 11, 1))
+plt.yticks(np.arange(-10, 11, 1))
+
+# Configuramos la ubicación del origen en el centro del plano cartesiano
+plt.axhline(0, color='grey', linewidth=0.5)
+plt.axvline(0, color='grey', linewidth=0.5)
 
 # Mostramos la figura
 plt.show()
