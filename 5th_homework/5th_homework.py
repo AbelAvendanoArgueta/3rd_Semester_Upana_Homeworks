@@ -46,15 +46,23 @@ def calcular_coordenada():
     global a
     global b
     global c
-    global x_Function
-    global y_Function
+    x_Function = 0
+    y_Function = 0
 
+    # El valor de x se solicita distintas veces para 
+    # trazar diferentes puntos en la gráfica
     x_Function = float(input("\nIngrese el valor de x: "))
 
-    y_Function1 = (a)*(x_Function**2) + (b*x_Function) + c
+    # Aquí aplico mate que debí aprender desde segundo básico
+    y_Function = (a)*(x_Function**2) + (b*x_Function) + c
+
+    # Ni modo, vamos a graficar en consola no?
+    # asi que le vamos a aproximar, ya si queremos puntos mas exactos
+    # le invito a usar  5th_homework_0.2.py
     x_Function = round(x_Function)
-    y_Function1 = round(y_Function1)
-    coordenada_Function = (x_Function, (y_Function1))
+    y_Function = round(y_Function)
+    coordenada_Function = (x_Function, (y_Function))
+
     return coordenada_Function
 
 def buscar_coordenada(diccionario, coordenada):
@@ -90,6 +98,42 @@ def imprimir_plano_cartesiano(plano_cartesiano):
             print(caracter, end="")
         print()
 
+def generacion_coordenadas():
+    global coordenadas
+    global newKeys_coord
+    # Generación de coordenadas
+    for y in range(50, -51, -1):
+        coordenadas[y] = []
+        for x in range(-50, 51):
+            coordenadas[y].append((x, y))
+
+    # Ordenamiento de claves en el diccionario de 
+    # coordenadas para que hagan match con los puntos
+    # del plano cartesiano
+    i = 0
+    for y in range(50, -51, -1):
+        newKeys_coord[i] = []
+        for x in range(-50, 51):
+            newKeys_coord[i].append((x, y))
+        i += 1
+    return coordenadas, newKeys_coord
+
+def generacion_plano_cartesiano():
+    ## Generación de plano cartesiano
+    for j in range(101):
+        if j == 50:
+            patron_CartesianPlane[j] = ["-" for i in range(101)]
+        else:
+            linea = []
+            for i in range(50):
+                linea.append(".")
+            linea.append("|")
+            for i in range(50):
+                linea.append(".")
+            patron_CartesianPlane[j] = linea
+    return patron_CartesianPlane
+    
+# Listas globales
 coordenadas = {}
 newKeys_coord = {}
 patron_CartesianPlane = {}
@@ -101,58 +145,18 @@ a = float(input("Ingrese el valor de a: "))
 b = float(input("Ingrese el valor de b: "))
 c = float(input("Ingrese el valor de c: "))
 
-# Otras variables globales necesarias
+generacion_coordenadas()
+generacion_plano_cartesiano()
 
-x_Function = 0
-y_Function = 0
+while True:
+    # Impresión de valor de coordenada
+    coordenada_Solved = calcular_coordenada()
 
-# Generación de coordenadas
-for y in range(50, -51, -1):
-    coordenadas[y] = []
-    for x in range(-50, 51):
-        coordenadas[y].append((x, y))
+    position_CoorInDict = buscar_coordenada(newKeys_coord, coordenada_Solved)
 
-# Ordenamiento de claves en el diccionario de 
-# coordenadas para que hagan match con los puntos
-# del plano cartesiano
-i = 0
-for y in range(50, -51, -1):
-    newKeys_coord[i] = []
-    for x in range(-50, 51):
-        newKeys_coord[i].append((x, y))
-    i += 1
+    patron_CartesianPlane = sustituir_caracter(position_CoorInDict, patron_CartesianPlane)
 
-## Generación de plano cartesiano
-
-# Generación de filas/lineas de plano cartesiano
-for j in range(101):
-    if j == 50:
-        patron_CartesianPlane[j] = ["-" for i in range(101)]
-    else:
-        linea = []
-        for i in range(50):
-            linea.append(".")
-        linea.append("|")
-        for i in range(50):
-            linea.append(".")
-        patron_CartesianPlane[j] = linea
-
-imprimir_plano_cartesiano(patron_CartesianPlane)
-
-print("\n character just for debugging: \n")
-print(patron_CartesianPlane[100][50])
-
-print("\n coor just for debugging: \n")
-
-print(newKeys_coord[46][53])
-
-# Impresión de valor de coordenada
-coordenada_Solved = calcular_coordenada()
-print("\n La coordenada correspondiente es: \n", coordenada_Solved)
-
-position_CoorInDict = buscar_coordenada(newKeys_coord, coordenada_Solved)
-
-print("\n La posicion a la previa coor en el diccionario es: \n")
-print(position_CoorInDict)
-
-patron_CartesianPlane = sustituir_caracter(position_CoorInDict, patron_CartesianPlane)
+    # Preguntamos al usuario si desea continuar graficando
+    respuesta = input("\n¿Desea ingresar otro valor de 'X'? (sí/no): ")
+    if respuesta.lower() == "no":
+        break
