@@ -52,49 +52,21 @@ def calcular_coordenada():
     x_Function = float(input("\nIngrese el valor de x: "))
 
     y_Function1 = (a)*(x_Function**2) + (b*x_Function) + c
-    coordenada_Function = (round(x_Function), round(y_Function1))
+    x_Function = round(x_Function)
+    y_Function1 = round(y_Function1)
+    coordenada_Function = (x_Function, (y_Function1))
     return coordenada_Function
 
-
-
-def crear_tablero():
-    # Define el tamaño del tablero
-    altura = 100
-    ancho = 100
-
-    # Crea una matriz vacía del tamaño del tablero
-    tablero = [[" " for _ in range(ancho)] for _ in range(altura)]
-
-    # Dibuja los ejes x e y
-    for i in range(ancho):
-        tablero[altura//2][i] = "-"
-    for i in range(altura):
-        tablero[i][ancho//2] = "|"
-
-    # Dibuja los cuadrantes
-    for i in range(ancho):
-        for j in range(altura):
-            if i == ancho//2 and j == altura//2:
-                tablero[j][i] = "0"
-            elif i == ancho//2:
-                tablero[j][i] = "|"
-            elif j == altura//2:
-                tablero[j][i] = "-"
-            elif i > ancho//2 and j < altura//2:
-                tablero[j][i] = "."
-            elif i < ancho//2 and j < altura//2:
-                tablero[j][i] = "."
-            elif i < ancho//2 and j > altura//2:
-                tablero[j][i] = "."
-            elif i > ancho//2 and j > altura//2:
-                tablero[j][i] = "."
-
-    # Crea un diccionario con las filas del tablero
-    diccionario_tablero = {i: "".join(fila) + "\n" for i, fila in enumerate(tablero)}
-
-    return tablero, diccionario_tablero
+def buscar_coordenada(coordenada, coordenadas):
+    for y, lista_coord in coordenadas.items():
+        for x, coord in lista_coord:
+            if coord == coordenada:
+                return (x, y)
+    return None
 
 coordenadas = {}
+newKeys_coord = {}
+patron_CartesianPlane = {}
 
 # Entradas de usuario en relación a, b y c que no deberían cambiar a lo
 # largo de la ejecución del script
@@ -108,32 +80,43 @@ c = float(input("Ingrese el valor de c: "))
 x_Function = 0
 y_Function = 0
 
-# Llama a la función y guarda los valores devueltos en variables
-tablero, diccionario_tablero = crear_tablero()
-
+# Generación de coordenadas
 for y in range(50, -51, -1):
     coordenadas[y] = []
     for x in range(-50, 51):
         coordenadas[y].append((x, y))
 
-# Imprime el tablero
-print("\n tablero just for debugging: \n")
-for fila in tablero:
-    print("".join(fila))
+i = 0
+for y in range(50, -51, -1):
+    newKeys_coord[i] = []
+    for x in range(-50, 51):
+        newKeys_coord[i].append((x, y))
+    i += 1
 
-print("\n separación \n")
+for j in range(101):
+    if j == 50:
+        patron_CartesianPlane[j] = ["-" for i in range(101)]
+    else:
+        linea = []
+        for i in range(50):
+            linea.append(".")
+        linea.append("|")
+        for i in range(50):
+            linea.append(".")
+        patron_CartesianPlane[j] = linea
 
-# Imprime el diccionario
-print("".join(diccionario_tablero.values()))
+for j in range(101):
+    for i in range(101):
+        print(patron_CartesianPlane[j][i], end="")
+    print()
 
 print("\n character just for debugging: \n")
-print(tablero[99])
+print(patron_CartesianPlane[100][50])
 
 print("\n coor just for debugging: \n")
 
-print(coordenadas[50])
+print(newKeys_coord[100][50])
 
 # Impresión de valor de coordenada
 coordenada_Solved = calcular_coordenada()
 print("\n La coordenada correspondiente es: \n", coordenada_Solved)
-print("\n El valor de x es:", x_Function)
