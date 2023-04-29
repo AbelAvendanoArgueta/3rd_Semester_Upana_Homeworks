@@ -57,12 +57,35 @@ def calcular_coordenada():
     coordenada_Function = (x_Function, (y_Function1))
     return coordenada_Function
 
-def buscar_coordenada(coordenada, coordenadas):
-    for y, lista_coord in coordenadas.items():
-        for x, coord in lista_coord:
-            if coord == coordenada:
-                return (x, y)
+def buscar_coordenada(diccionario, coordenada):
+    # función para buscar posición de la coordenada dentro del
+    # diccionario newKeys_coord = {}
+    for i, lista_coordenadas in diccionario.items():
+        if coordenada in lista_coordenadas:
+            return i, lista_coordenadas.index(coordenada)
     return None
+
+def actualizar_patron(coordenada, diccionario):
+    pos = buscar_coordenada(diccionario, coordenada)
+    if pos is not None:
+        fila, columna = pos
+        diccionario[fila][columna] = "*"
+
+def sustituir_caracter(position_CoorInDict, patron_CartesianPlane):
+    # Extraemos el índice de fila y columna del diccionario a partir de position_CoorInDict
+    i, j = position_CoorInDict
+
+    # Sustituimos el caracter en la posición correspondiente por el símbolo "*"
+    patron_CartesianPlane[i][j] = "*"
+
+    # Imprimimos el plano cartesiano actualizado
+    for fila in patron_CartesianPlane.values():
+        for caracter in fila:
+            print(caracter, end="")
+        print()
+
+    return patron_CartesianPlane
+
 
 coordenadas = {}
 newKeys_coord = {}
@@ -86,6 +109,9 @@ for y in range(50, -51, -1):
     for x in range(-50, 51):
         coordenadas[y].append((x, y))
 
+# Ordenamiento de claves en el diccionario de 
+# coordenadas para que hagan match con los puntos
+# del plano cartesiano
 i = 0
 for y in range(50, -51, -1):
     newKeys_coord[i] = []
@@ -93,6 +119,9 @@ for y in range(50, -51, -1):
         newKeys_coord[i].append((x, y))
     i += 1
 
+## Generación de plano cartesiano
+
+# Generación de filas/lineas de plano cartesiano
 for j in range(101):
     if j == 50:
         patron_CartesianPlane[j] = ["-" for i in range(101)]
@@ -105,6 +134,7 @@ for j in range(101):
             linea.append(".")
         patron_CartesianPlane[j] = linea
 
+# Impresión de caracteres en terminal/consola
 for j in range(101):
     for i in range(101):
         print(patron_CartesianPlane[j][i], end="")
@@ -115,8 +145,15 @@ print(patron_CartesianPlane[100][50])
 
 print("\n coor just for debugging: \n")
 
-print(newKeys_coord[100][50])
+print(newKeys_coord[46][53])
 
 # Impresión de valor de coordenada
 coordenada_Solved = calcular_coordenada()
 print("\n La coordenada correspondiente es: \n", coordenada_Solved)
+
+position_CoorInDict = buscar_coordenada(newKeys_coord, coordenada_Solved)
+
+print("\n La posicion a la previa coor en el diccionario es: \n")
+print(position_CoorInDict)
+
+patron_CartesianPlane = sustituir_caracter(position_CoorInDict, patron_CartesianPlane)
