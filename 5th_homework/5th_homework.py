@@ -79,13 +79,16 @@ def sustituir_caracter(position_CoorInDict, patron_CartesianPlane):
     patron_CartesianPlane[i][j] = "*"
 
     # Imprimimos el plano cartesiano actualizado
-    for fila in patron_CartesianPlane.values():
-        for caracter in fila:
-            print(caracter, end="")
-        print()
+    imprimir_plano_cartesiano(patron_CartesianPlane)
 
     return patron_CartesianPlane
 
+def imprimir_plano_cartesiano(plano_cartesiano):
+    # Función para imprimir plano cartesiano
+    for fila in plano_cartesiano.values():
+        for caracter in fila:
+            print(caracter, end="")
+        print()
 
 coordenadas = {}
 newKeys_coord = {}
@@ -134,11 +137,7 @@ for j in range(101):
             linea.append(".")
         patron_CartesianPlane[j] = linea
 
-# Impresión de caracteres en terminal/consola
-for j in range(101):
-    for i in range(101):
-        print(patron_CartesianPlane[j][i], end="")
-    print()
+imprimir_plano_cartesiano(patron_CartesianPlane)
 
 print("\n character just for debugging: \n")
 print(patron_CartesianPlane[100][50])
