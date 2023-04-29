@@ -13,6 +13,17 @@ Crear un programa en Python que permita graficar cualquier ecuación cuadrática
         * El valor de "c": Coeficiente que no tiene literal.
     - Plotear la gráfica en la consola de Python en una matriz cuadrada de 100 espacios por 100 líneas.
 """
+"""
+Notas del estudiante a tomar en cuenta:
+
+    Una función bastante probada es la siguiente: "f(x) = 1x^2 - 2x + 1"
+    donde el programa puede graficar puntos desde -6, -5, -4... hasta 8
+
+    Funciones que grafiquen puntos mas haya de (-50,50) y (50,-50) en términos
+    de "X" y "Y" no podrán ser graficados usando este script, en tal caso
+    le invitaria a usar  5th_homework_0.2.py
+
+"""
 
 # Librerías Importantes
 import os
