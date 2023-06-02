@@ -1,3 +1,26 @@
+# Funciones Lambda en Python
+# Due tomorrow at 11:59 PM
+# Instructions
+# Calculadora de área y perímetro
+
+# Crear un programa en Python que utilice funciones lambda para
+# calcular el área y el perímetro de diferentes figuras geométricas.
+# El programa debe ofrecer al usuario un menú de opciones para que
+# pueda seleccionar la figura con la que desea trabajar: cuadrado,
+# triángulo o círculo. Una vez seleccionada la figura, el programa
+# debe solicitar los datos necesarios al usuario para realizar los
+# cálculos. 
+
+# El programa debe tener una funciones lambda para cada figura 
+# geométrica que calcule y retorne el área y el perímetro 
+# correspondientes. Una vez realizados los cálculos, el programa debe
+# mostrar los resultados al usuario de forma clara y legible, indicando
+# el valor del área y el perímetro de la figura seleccionada.
+
+# Utilizar nombres descriptivos para las variables. Además, considera 
+# manejar correctamente los tipos de datos y posibles errores de 
+# entrada por parte del usuario.
+
 import os
 import math
 
