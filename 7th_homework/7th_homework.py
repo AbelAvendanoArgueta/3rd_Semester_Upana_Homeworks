@@ -1,11 +1,27 @@
+import os
 import math
 
-# Definición de funciones lambda para calcular el área y perímetro de cada figura
+    # la librería "math" se utiliza para acceder a la constante matemática 
+    # "pi" (math.pi) y para calcular la raíz cuadrada (math.sqrt()). Estas
+    # funciones son utilizadas para calcular el área y el perímetro del círculo.
+    # Definición de funciones lambda para calcular el área y perímetro de cada figura
 
 area_perimetro_cuadrado = lambda lado: (lado ** 2, lado * 4)
 area_perimetro_triangulo = lambda base, altura: (base * altura / 2, base + (2 * (math.sqrt((base / 2) ** 2 + altura ** 2))))
 area_perimetro_circulo = lambda radio: (math.pi * radio ** 2, 2 * math.pi * radio)
- 
+
+
+# función para imprimir encabezados centrados
+
+def print_header(text):
+
+    # La función get_terminal_size() devuelve un objeto 
+    # os.terminal_size que contiene el tamaño actual de la terminal.
+    terminal_size = os.get_terminal_size().columns
+    header = text.center(terminal_size)
+    print(header)
+
+
 # Función para mostrar el menú y realizar los cálculos
 
 def calcular_figura():
@@ -41,6 +57,18 @@ def calcular_figura():
             break
         else:
             print("Opción inválida. Por favor, seleccione una figura válida.\n")
+
+## Imprimir encabezados
+print_header("UNIVERSIDAD PANAMERICANA DE GUATEMALA")
+print_header("Campus de Cobán Alta Verapaz")
+print_header("Facultad de Ingeniería y Ciencias Aplicadas")
+print_header("Carrera de Ingeniería en Sistemas y Tecnologías de la Información y Comunicación")
+print_header("Abel Fernando Avendaño Argueta 000127599")
+
+## Ejecución del programa
+
+# Saludo
+print("\n\n         Bienvenido a este programa! \n\n")
 
 # Ejecución del programa
 calcular_figura()
