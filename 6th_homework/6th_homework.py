@@ -1,8 +1,18 @@
 import math
+import os
 
     # la librería "math" se utiliza para acceder a la constante matemática 
     # "pi" (math.pi) y para calcular la raíz cuadrada (math.sqrt()). Estas
     # funciones son utilizadas para calcular el área y el perímetro del círculo.
+
+# función para imprimir encabezados centrados
+def print_header(text):
+
+    # La función get_terminal_size() devuelve un objeto 
+    # os.terminal_size que contiene el tamaño actual de la terminal.
+    terminal_size = os.get_terminal_size().columns
+    header = text.center(terminal_size)
+    print(header)
 
 def calcular_area_cuadrado(lado):
     """
@@ -115,6 +125,18 @@ def main():
             
         else:
             print("Opción no válida. Por favor, seleccione una opción válida.")
+
+## Imprimir encabezados
+print_header("UNIVERSIDAD PANAMERICANA DE GUATEMALA")
+print_header("Campus de Cobán Alta Verapaz")
+print_header("Facultad de Ingeniería y Ciencias Aplicadas")
+print_header("Carrera de Ingeniería en Sistemas y Tecnologías de la Información y Comunicación")
+print_header("Abel Fernando Avendaño Argueta 000127599")
+
+## Ejecución del programa
+
+# Saludo
+print("\n\n         Bienvenido a este programa! \n\n")
 
 if __name__ == "__main__":
     main()
